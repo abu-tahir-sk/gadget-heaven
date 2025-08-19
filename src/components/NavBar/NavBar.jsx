@@ -1,7 +1,15 @@
+import { NavLink } from "react-router-dom";
+import { IoCartOutline } from "react-icons/io5";
+import { GiSelfLove } from "react-icons/gi";
 
 const NavBar = () => {
+  const links = <>
+     <li><NavLink to="/"  className="text-white">Home</NavLink></li>
+     <li><NavLink to="/dashboard"  className="text-white">Dashboard</NavLink></li>
+      <li><a className="text-white">Statistics</a></li>
+  </>
       return (
-           <div className="navbar bg-base-100">
+           <div className="navbar bg-[#9538E2] rounded-t-lg md:px-12">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -21,37 +29,21 @@ const NavBar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
+        {links}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <a className="btn btn-ghost text-2xl text-white hover:text-[#9538E2]">Gadget Heaven</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
+    <ul className="menu menu-horizontal px-1 gap-4">
+     {links}
     </ul>
   </div>
-  <div className="navbar-end">
-    <a className="btn">Button</a>
+  <div className="navbar-end gap-2">
+    <a className="rounded-full p-2 bg-white"><IoCartOutline /></a>
+    <a className="rounded-full p-2 bg-white"><GiSelfLove /></a>
   </div>
+
 </div>
       );
 };

@@ -1,9 +1,15 @@
-import React from 'react';
+import Banner from "../Banner/Banner";
+import BannerImg from "../BannerImg/BannerImg";
+import Gadgetes from "../Gadgetes/Gadgetes";
+
+
 
 const Home = () => {
       return (
-            <div>
-                  <h1>jfjdjfdjfdie</h1>
+            <div>     
+          <Banner></Banner>
+          <BannerImg></BannerImg>
+          <Gadgetes></Gadgetes>
             </div>
       );
 };

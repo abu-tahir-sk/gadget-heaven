@@ -1,3 +1,4 @@
+import BannerImg from "./components/BannerImg/BannerImg"
 
 function App() {
   

@@ -3,9 +3,10 @@ import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 
 
+
 const Root = () => {
       return (
-            <div>
+            <div className="w-11/12 mx-auto py-6">
                   <NavBar></NavBar>
                   <Outlet></Outlet>
                   <Footer></Footer>
