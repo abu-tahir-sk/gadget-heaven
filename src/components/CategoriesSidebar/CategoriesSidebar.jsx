@@ -1,17 +1,32 @@
-import { NavLink } from "react-router-dom";
 
 const CategoriesSidebar = () => {
-      return (
-            <div className="border-2 rounded-md p-8 shadow-lg flex flex-col gap-4">
-                  <button className="btn rounded-full border-2 bg-gray-200"><NavLink>All Products</NavLink></button>
-                  <button className="btn rounded-full border-2 bg-gray-200"><NavLink>Laptops</NavLink></button>
-                  <button className="btn rounded-full border-2 bg-gray-200"><NavLink>Phones</NavLink></button>
-                  <button className="btn rounded-full border-2 bg-gray-200"><NavLink>Accessories</NavLink></button>
-                  <button className="btn rounded-full border-2 bg-gray-200"><NavLink>Smart Watches</NavLink></button>
-                  <button className="btn rounded-full border-2 bg-gray-200"><NavLink>MacBook</NavLink></button>
-                  <button className="btn rounded-full border-2 bg-gray-200"><NavLink>Iphone</NavLink></button>
-            </div>
-      );
+  return (
+    <div className="border-2 rounded-md p-8 shadow-lg flex md:flex-col gap-4 md:max-h-min overflow-auto">
+     
+       <button className="btn rounded-full border-2 bg-gray-200 px-3">
+        All Products
+      </button>
+      <button className="btn rounded-full border-2 bg-gray-200 px-3">
+        Laptops
+      </button>
+      <button className="btn rounded-full border-2 bg-gray-200 px-3">
+        Phones
+      </button>
+      <button className="btn rounded-full border-2 bg-gray-200 px-3">
+        Accessories
+      </button>
+      <button className="btn rounded-full border-2 bg-gray-200 px-3">
+        Smart Watches
+      </button>
+      <button className="btn rounded-full border-2 bg-gray-200 px-3">
+        MacBook
+      </button>
+      <button className="btn rounded-full border-2 bg-gray-200 px-3">
+        Iphone
+      </button>
+     
+    </div>
+  );
 };
 
 export default CategoriesSidebar;
