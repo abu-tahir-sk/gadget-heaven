@@ -1,0 +1,34 @@
+ [
+  
+  {
+    "id": 1,
+    "category": "Laptop",
+    "slug": "laptop"
+  },
+  {
+    "id": 2,
+    "category": "Mobile",
+    "slug": "Mobile"
+  },
+  {
+    "id": 3,
+    "category": "Charger",
+    "slug": "Charger"
+  },
+  {
+    "id": 4,
+    "category": "Smart Watches",
+    "slug": "smart-watches"
+  },
+  {
+    "id": 5,
+    "category": "iPhone",
+    "slug": "iphone"
+  },
+  {
+    "id": 6,
+    "category": "Others",
+    "slug": "Others"
+  }
+  
+]

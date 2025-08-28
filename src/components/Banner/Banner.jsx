@@ -2,8 +2,8 @@
 const Banner = () => {
       return (
             
-                   <div className="hero bg-[#9538E2] rounded-b-lg ">
-  <div className="hero-content text-center pt-12 pb-28">
+                   <div className="hero bg-purple-900 rounded-b-lg ">
+  <div className="hero-content text-center pt-20 pb-28">
     <div className="md:w-11/12 mx-auto">
       <h1 className="text-5xl font-bold text-white">Upgrade Your Tech Accessorize with Gadget Heaven Accessories</h1>
       <p className="py-6 text-white">

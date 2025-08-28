@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 
 const GadgetCard = ({ gadget }) => {
-  const { product_id, product_image, product_title, price } = gadget;
+  const { product_id, product_image, product_title, price } = gadget || {};
   return (
-    <div className="border-2 rounded-lg p-3 shadow-lg">
+    <div className="border-2 rounded-lg p-3 shadow-lg transition hover:scale-105 overflow-hidden">
       <div className="h-48 shadow rounded-t-md">
         <img className="w-full h-full" src={product_image} alt={product_title} />
       </div>
