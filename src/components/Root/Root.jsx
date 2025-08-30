@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+import { TabTitle } from "../../utilites/gadgetTitle";
 
 
 
 const Root = () => {
-      
+       TabTitle('Gadgetes Heaven')
       return (
             <div className="">
                  

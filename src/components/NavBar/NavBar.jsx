@@ -1,11 +1,27 @@
 import { NavLink } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { GiSelfLove } from "react-icons/gi";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
+
+
 const NavBar = () => {
+ 
   const { cartList,hartList } = useContext(CartContext);
+   const [gadgets, setGadgets] = useState([]);
+
+    useEffect(() => {
+    fetch("/gadgetsData.json")
+      .then(res => res.json())
+      .then(data => setGadgets(data));
+  }, []);
+  
+
+   const cartDetails = gadgets.filter(item => cartList.includes(item.product_id.toString()));
+
+  
+  const [open, setOpen] = useState(false)
 
   const links = (
     <>
@@ -81,25 +97,45 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1 gap-4">{links}</ul>
       </div>
       <div className="navbar-end gap-2">
-        <a className="rounded-full p-2 bg-white hover:bg-gray-400 relative">
+        <button className="rounded-full p-2 bg-white hover:bg-gray-400 relative">
          {cartList.length > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
             {cartList.length}
           </span>
         )}
-          <IoCartOutline>
+        <div onClick={() =>setOpen(!open)} className="relative">
+           <IoCartOutline  >
             
-          </IoCartOutline>
-        </a>
-        <a className="rounded-full p-2 bg-white hover:bg-gray-400 relative">
+          </IoCartOutline>    
+        </div>
+        </button>
+        <button className="rounded-full p-2 bg-white hover:bg-gray-400 relative">
           {hartList.length > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
             {hartList.length}
           </span>
         )}
           <GiSelfLove />
-        </a>
+        </button>
       </div>
+      <div className={`flex flex-col duration-500 bg-white absolute right-6 w-64 min-h-36 p-4 rounded-md overflow-y-auto ${open && cartDetails.length > 0 ? "top-16" : 'hidden'}`}>
+       <div>
+               
+            {cartDetails.length > 0 ? (
+              cartDetails.map(product => (
+                <div key={product.product_id} className="flex items-center gap-2 border-b py-2">
+                  <img src={product.product_image} alt={product.product_title} className="w-12 h-12 rounded" />
+                  <div>
+                    <h3 className="text-sm font-semibold">{product.product_title}</h3> 
+                    <p className="text-xs text-gray-500">${product.price}</p>
+                  </div>
+                </div>
+              ))
+            ) : 'alert("jfjg")' }
+         
+    </div>
+      </div>
+      
     </div>
   );
 };

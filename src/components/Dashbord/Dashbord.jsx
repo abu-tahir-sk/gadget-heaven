@@ -1,9 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Heading from "../Heading/Heading";
+import { TabTitle } from "../../utilites/gadgetTitle";
 
 const Dashbord = () => {
- 
+   TabTitle('Dashboard - Gadgetes Heaven')
   return (
+
     <div>
       <div className=" bg-purple-900 rounded-b-lg text-center py-16 flex flex-col">
         <Heading

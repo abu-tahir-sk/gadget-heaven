@@ -10,6 +10,8 @@ const GadgetDetails = () => {
   const data = useLoaderData();
   const id = parseInt(product_id);
 
+
+
   const gadget = data.find((gadget) => gadget.product_id == id);
 
   const {

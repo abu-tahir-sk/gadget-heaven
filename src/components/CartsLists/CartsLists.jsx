@@ -6,8 +6,13 @@ import { VscSettings } from "react-icons/vsc";
 import favicon from "../../assets/Group.png";
 
 import Modal from "react-modal";
+import { TabTitle } from "../../utilites/gadgetTitle";
 
 const CartsLists = () => {
+
+ TabTitle('Carts Lists - Gadgetes Heaven')
+
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleCloseModal = () => {
@@ -21,9 +26,6 @@ const CartsLists = () => {
   const navigate = useNavigate();
 
   const handleParches = () => {
-    
-   
-
     setIsOpen(true);
   };
 

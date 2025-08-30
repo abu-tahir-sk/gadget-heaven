@@ -4,8 +4,9 @@ import GadgetCard from "../GadgetCard/GadgetCard";
 import { useEffect, useState } from "react";
 import ErrorPage from "../ErrorPage/ErrorPage";
 
+
 const GadgetsCards = () => {
-    
+     
       const { category} = useParams();
       const gadgets = useLoaderData();
       const [gadgetss, setGadgetss] =  useState([]);

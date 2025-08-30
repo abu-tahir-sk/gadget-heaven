@@ -4,8 +4,10 @@ import { getStoredHartList } from "../../utilites/utilites";
 import Hart from "../Hart/Hart";
 import { VscSettings } from "react-icons/vsc";
 import { CartContext } from "../../context/CartContext";
+import { TabTitle } from "../../utilites/gadgetTitle";
 
 const WishList = () => {
+  TabTitle('Wish Lists Lists - Gadgetes Heaven')
   const [hartList, setHartList] = useState([]);
   const data = useLoaderData();
 

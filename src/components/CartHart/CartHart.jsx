@@ -1,8 +1,10 @@
-import { MdDescription } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
+
 const CartHart = ({cart}) => {
+        
       const { product_id, product_image, product_title, price ,description} = cart;
       return (
+
             <div className="flex justify-start items-center gap-10 shadow-xl bg-white my-6 rounded-md relative">
                  <div className="h-44 w-56 p-8 shadow-lg bg-gray-50 rounded-2xl">
                    <img className="w-full h-full rounded-2xl bg-gray-400" src={product_image} alt="" />

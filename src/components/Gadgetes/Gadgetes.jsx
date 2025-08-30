@@ -1,8 +1,10 @@
 import { Outlet, useLoaderData } from "react-router-dom";
 import CategoriesSidebar from "../CategoriesSidebar/CategoriesSidebar";
 
+
 const Gadgetes = () => {
   const categories = useLoaderData();
+   
       return (
             <div>
               <h2 className="text-3xl font-bold text-center py-6 text-purple-600">Explore Cutting-Edge Gadgets</h2>  

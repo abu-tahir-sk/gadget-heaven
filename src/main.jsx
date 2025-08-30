@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
 import Root from "./components/Root/Root";
 import Home from "./components/Home/Home";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
@@ -76,9 +76,7 @@ const router = createBrowserRouter([
 const MainApp = () => {
   const [cartList, setCartList] = useState([]);
   const [hartList, setHartList] = useState([]);
-
   
-
 
   useEffect(() => {
     const stored = getStoredCartList();
@@ -88,14 +86,21 @@ const MainApp = () => {
     const stored = getStoredHartList();
     setHartList(Array.isArray(stored) ? stored : []);
   }, []);
+  
 
   return (
-    <CartContext.Provider value={{ cartList, setCartList, hartList, setHartList}}>
+    <CartContext.Provider
+      value={{ cartList, setCartList, hartList, setHartList}}
+    >
+      
       <RouterProvider router={router} />
     </CartContext.Provider>
   );
 };
+
+
 createRoot(document.getElementById("root")).render(
+  
   <StrictMode>
     <MainApp />
   </StrictMode>
