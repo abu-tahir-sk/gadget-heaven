@@ -15,8 +15,8 @@ const Dashbord = () => {
           }
         ></Heading>
         <div className="flex gap-8 justify-center items-center">
-          <NavLink to="carts"  className={({isActive}) => `"cart" btn rounded-full border-2 bg-gray-200 px-3 ${isActive ? 'bg-purple-600 text-white' : ""}`}>Cart</NavLink>
-          <NavLink to="wish" className={({isActive}) => `"wishList" btn rounded-full border-2 bg-gray-200 px-3 ${isActive ? 'bg-purple-600 text-white' : ""}`}>Wishlist</NavLink>
+          <NavLink to="carts"  className={({isActive}) => `btn rounded-full border-2 bg-gray-200 hover:bg-white hover:text-purple-900 px-3 ${isActive ? 'bg-white text-purple-900' : "bg-purple-900 text-white"}`}>Cart</NavLink>
+          <NavLink to="wish" className={({isActive}) => ` btn rounded-full border-2 bg-gray-200 px-3 hover:bg-white hover:text-purple-900 ${isActive ? 'bg-white text-purple-900' : "bg-purple-900 text-white"}`}>Wishlist</NavLink>
         </div>
       </div>
     

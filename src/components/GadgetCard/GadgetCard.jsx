@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 
 const GadgetCard = ({ gadget }) => {
+  
+  
   const { product_id, product_image, product_title, price } = gadget || {};
   return (
     <div className="border-2 rounded-lg p-3 shadow-lg transition hover:scale-105 overflow-hidden">
@@ -11,7 +13,7 @@ const GadgetCard = ({ gadget }) => {
         <h3 className="text-2xl font-bold py-4">{product_title}</h3>
         <p className="text-gray-400 pb-3">Price:{price} k</p>
             <NavLink to={`/gadgets/${product_id}`}>
-                  <button className="btn rounded-3xl border-2 border-[#9538E2] text-purple-700 bg-purple-50">View Details</button>
+                  <button className="btn rounded-3xl border-2 border-[#9538E2] text-purple-700 bg-purple-50 hover:bg-purple-800 hover:text-white">View Details</button>
             </NavLink>
       </div>
     </div>

@@ -3,23 +3,19 @@ import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import { TabTitle } from "../../utilites/gadgetTitle";
 
-
-
 const Root = () => {
-       TabTitle('Gadgetes Heaven')
-      return (
-            <div className="">
-                 
+  TabTitle("Gadgetes Heaven");
+  return (
+    <div className="">
       <div className="h-16">
-                   <NavBar></NavBar>
-                 </div>
-                 <div className="min-h-[calc(100vh-285px)]">
-                  <Outlet></Outlet>
-                 </div>
-                  <Footer></Footer>
-    
-            </div>
-      );
+        <NavBar></NavBar>
+      </div>
+      <div className="min-h-[calc(100vh-411px)] md:w-11/12 mx-auto">
+        <Outlet></Outlet>
+      </div>
+      <Footer></Footer>
+    </div>
+  );
 };
 
 export default Root;

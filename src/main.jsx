@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./components/Root/Root";
 import Home from "./components/Home/Home";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
@@ -15,6 +15,9 @@ import WishList from "./components/WishList/WishList";
 
 import { CartContext } from "./context/CartContext";
 import { getStoredCartList, getStoredHartList } from "./utilites/utilites";
+import ErrorData from "./components/ErrorData/ErrorData";
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -26,16 +29,17 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () => fetch("../categoriesData.json"),
-        errorElement: <ErrorPage></ErrorPage>,
         children: [
           {
             path: "/",
             element: <GadgetsCards></GadgetsCards>,
             loader: () => fetch("../gadgetsData.json"),
+            
           },
           {
             path: "/category/:category",
             element: <GadgetsCards></GadgetsCards>,
+            errorElement: <ErrorData></ErrorData>,
             loader: () => fetch("../gadgetsData.json"),
           },
         ],
@@ -94,6 +98,7 @@ const MainApp = () => {
     >
       
       <RouterProvider router={router} />
+      <ToastContainer />
     </CartContext.Provider>
   );
 };

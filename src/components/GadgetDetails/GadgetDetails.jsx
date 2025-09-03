@@ -1,8 +1,10 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useLocation, useParams } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { GiSelfLove } from "react-icons/gi";
-import { addToStoredCartList, addToStoredHartList } from "../../utilites/utilites";
-
+import {
+  addToStoredCartList,
+  addToStoredHartList,
+} from "../../utilites/utilites";
 
 const GadgetDetails = () => {
   const { product_id } = useParams();
@@ -10,7 +12,8 @@ const GadgetDetails = () => {
   const data = useLoaderData();
   const id = parseInt(product_id);
 
-
+  const location = useLocation();
+  const isActive = (path) => location.pathname === path;
 
   const gadget = data.find((gadget) => gadget.product_id == id);
 
@@ -24,12 +27,11 @@ const GadgetDetails = () => {
   } = gadget;
 
   const handleMarkCart = (id) => {
-    addToStoredCartList(id)
-    
-  }
+    addToStoredCartList(id);
+  };
   const handleMarkHart = (id) => {
-    addToStoredHartList(id)
-  }
+    addToStoredHartList(id);
+  };
   return (
     <div className="hero md:flex md:w-8/12 mx-auto mb-20 relative rounded-xl -mt-24 z-10 bg-purple-50">
       <div className="hero-content flex-col lg:flex-row">
@@ -45,20 +47,21 @@ const GadgetDetails = () => {
           <h4 className="font-bold text-xl py-3">Specification:</h4>
           <div>
             <ol className="list-decimal pl-8">
-              {specification.map((specifications,index) => (
+              {specification.map((specifications, index) => (
                 <li key={index}>{specifications}</li>
               ))}
             </ol>
           </div>
-          <div className="flex items-center gap-3"><h4 className="font-bold text-xl">Rating</h4> <div className="rating">
+          <div className="flex items-center gap-3">
+            <h4 className="font-bold text-xl">Rating</h4>{" "}
+            <div className="rating">
               <input
                 type="radio"
                 name="rating-2"
                 className="mask mask-star-2 bg-orange-500"
-              />             
-              
+              />
             </div>
-            </div>
+          </div>
           <div className="font-bold py-3 flex items-center gap-3">
             <div className="rating">
               <input
@@ -91,12 +94,18 @@ const GadgetDetails = () => {
             <p className="btn rounded-full pl-3">{rating}</p>
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={()=>handleMarkCart(product_id)} className="btn bg-purple-700 rounded-3xl text-white">
-            Add To Card <span><IoCartOutline className="text-2xl"></IoCartOutline></span>
-          </button>
-          <p onClick={()=>handleMarkHart(product_id)}>
-            <GiSelfLove className="text-3xl"></GiSelfLove>
-          </p>
+            <button
+              onClick={() => handleMarkCart(product_id)}
+              className={`btn bg-purple-700 hover:bg-white hover:text-purple-700 rounded-3xl text-white ${isActive('/dashboard') ? 'bg-white text-purple-700' : ''}`}
+            >
+              Add To Card{" "}
+              <span>
+                <IoCartOutline className="text-2xl"></IoCartOutline>
+              </span>
+            </button>
+            <p onClick={() => handleMarkHart(product_id)} className="text-2xl hover:bg-gray-400 rounded-full p-2">
+              <GiSelfLove ></GiSelfLove>
+            </p>
           </div>
         </div>
       </div>

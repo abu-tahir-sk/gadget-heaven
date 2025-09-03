@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getStoredCartList } from "../../utilites/utilites";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import CartHart from "../CartHart/CartHart";
 import { VscSettings } from "react-icons/vsc";
 import favicon from "../../assets/Group.png";
@@ -9,16 +9,27 @@ import Modal from "react-modal";
 import { TabTitle } from "../../utilites/gadgetTitle";
 
 const CartsLists = () => {
-
- TabTitle('Carts Lists - Gadgetes Heaven')
-
+  TabTitle("Carts Lists - Gadgetes Heaven");
 
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  const handleDelete = (idToDelete) => {
+    const updatedItems = cartList.filter(
+      (cart) => cart.product_id !== idToDelete
+    );
+    setCartList(updatedItems);
+
+    const stored = getStoredCartList().filter(
+      (id) => parseInt(id) !== idToDelete
+    );
+    localStorage.setItem("cart-list", JSON.stringify(stored));
+  };
 
   const handleCloseModal = () => {
     localStorage.clear();
     setIsOpen(false);
-     setCartList([]);
+    setCartList([]);
+
     navigate("/");
   };
 
@@ -58,9 +69,9 @@ const CartsLists = () => {
     <>
       <div className="navbar ">
         <div className="flex-1">
-          <a href="/" className="btn btn-ghost text-2xl">
+          <Link href="/" className="btn btn-ghost text-2xl">
             Carts
-          </a>
+          </Link>
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1 gap-4 items-center">
@@ -70,23 +81,27 @@ const CartsLists = () => {
               </h3>
             </li>
             <li>
-              <a
-                className="btn border-2 border-purple-600 bg-purple-200 font-bold rounded-full text-purple-700"
+              <NavLink
+                className="btn border-2 border-purple-600 bg-purple-200 font-bold rounded-full text-purple-700 hover:bg-purple-600 hover:text-white"
                 onClick={() => handleSort("price")}
               >
                 Sort by Price
                 <VscSettings className="text-xl font-bold"></VscSettings>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                className="btn font-bold rounded-full text-white bg-gradient-to-t from-purple-600 to-purple-900 hover:bg-slate-100"
+              <NavLink
+                className={`btn font-bold rounded-full  
+                  ${
+                    cartList.length === 0
+                      ? "text-gray-400 bg-white cursor-not-allowed"
+                      : "text-white bg-gradient-to-t from-purple-600 to-purple-900"
+                  }`}
                 onClick={handleParches}
                 disabled={cartList.length === 0}
-              
               >
                 Purchase
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -94,7 +109,11 @@ const CartsLists = () => {
 
       <div className="w-10/12 mx-auto my-12 flex flex-col bg-blue-100 p-8">
         {cartList.map((cart) => (
-          <CartHart key={cart.product_id} cart={cart}></CartHart>
+          <CartHart
+            key={cart.product_id}
+            cart={cart}
+            handleDelete={handleDelete}
+          ></CartHart>
         ))}
       </div>
       <div className="">
@@ -113,7 +132,9 @@ const CartsLists = () => {
             <p className="text-gray-500 text-center pb-2">
               Thanks for purchasing.
             </p>
-            <p className="text-slate-400 text-center">Total: {formattedTotal} tk</p>
+            <p className="text-slate-400 text-center">
+              Total: {formattedTotal} tk
+            </p>
             <button
               className="bg-gray-200 my-2 py-2 rounded-md w-full font-bold"
               onClick={handleCloseModal}
