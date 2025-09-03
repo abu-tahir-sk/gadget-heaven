@@ -1,3 +1,4 @@
+import { parse } from "postcss";
 import { toast } from "react-toastify";
 
 const getStoredCartList = () => {
@@ -32,11 +33,27 @@ const addToStoredCartList = (id) => {
 const getStoredHartList = () => {
   const storedListStr = localStorage.getItem("hart-list");
   if (storedListStr) {
-    const storedList = JSON.parse(storedListStr);
-    return storedList;
+     const storedList = JSON.parse(storedListStr);
+    return storedList.map((id) => parseInt(id));
   } else {
     return [];
   }
+};
+
+export const saveToCartList = (id) => {
+  const stored = JSON.parse(localStorage.getItem("cart-list")) || [];
+  if (!stored.includes(id)) {
+    stored.push(id);
+    localStorage.setItem("cart-list", JSON.stringify(stored));
+  }
+};
+
+
+export const removeFromHartList = (id) => {
+  const stored = getStoredHartList();
+  const updated = stored.filter((itemId) => itemId !== parseInt(id));
+  localStorage.setItem("hart-list", JSON.stringify(updated));
+  return updated;
 };
 
 const addToStoredHartList = (id) => {

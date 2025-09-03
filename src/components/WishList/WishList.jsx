@@ -1,16 +1,28 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { getStoredHartList } from "../../utilites/utilites";
+import { getStoredHartList, removeFromHartList, saveToCartList } from "../../utilites/utilites";
 import Hart from "../Hart/Hart";
 import { VscSettings } from "react-icons/vsc";
-import { CartContext } from "../../context/CartContext";
 import { TabTitle } from "../../utilites/gadgetTitle";
 
 const WishList = () => {
   TabTitle('Wish Lists Lists - Gadgetes Heaven')
   const [hartList, setHartList] = useState([]);
-  const data = useLoaderData();
+  const [cartList,setCartList] = useState([]);
 
+  const data = useLoaderData();
+  const handleAddToCart = (id) => {
+      const product = hartList.find((item) => item.product_id === id);
+    if (!product) return;
+
+    setCartList([...cartList, product]);
+    saveToCartList(id); 
+
+    
+    const updated = hartList.filter((item) => item.product_id !== id);
+    setHartList(updated);
+    removeFromHartList(id); 
+  };
   useEffect(() => {
     const storedHartList = getStoredHartList();
     const storedHartListInt = storedHartList.map((id) => parseInt(id));
@@ -55,7 +67,11 @@ const WishList = () => {
 
       <div className="w-10/12 mx-auto my-12 flex flex-col bg-gray-100 p-8">
         {hartList.map((hart) => (
-          <Hart key={hart.product_id} hart={hart}></Hart>
+          <Hart 
+          key={hart.product_id} 
+          hart={hart}
+          handleAddToCart={handleAddToCart}
+          ></Hart>
         ))}
       </div>
     </>
