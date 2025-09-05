@@ -98,7 +98,7 @@ const GadgetDetails = () => {
               onClick={() => handleMarkCart(product_id)}
               className={`btn bg-purple-700 hover:bg-white hover:text-purple-700 rounded-3xl text-white ${isActive('/dashboard') ? 'bg-white text-purple-700' : ''}`}
             >
-              Add To Card{" "}
+              Add To Card
               <span>
                 <IoCartOutline className="text-2xl"></IoCartOutline>
               </span>
