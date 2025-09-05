@@ -2,7 +2,7 @@
 const CartHart = ({hart,handleAddToCart}) => {
       const { product_id, product_image, product_title, price,description } = hart;
       return (
-            <div className="flex justify-start items-center gap-10 shadow-xl bg-white my-6 py-3 rounded-md">
+            <div className="md:flex justify-start items-center gap-10 shadow-xl bg-white my-6 py-3 rounded-md p-4">
                  <div className="h-44 w-56 p-8 shadow-lg bg-gray-50 rounded-2xl">
                    <img className="w-full h-full rounded-2xl bg-gray-400" src={product_image} alt="" />
                  </div>
