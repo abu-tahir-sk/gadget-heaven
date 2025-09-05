@@ -3,6 +3,5 @@
 
 ### React Fundamental concepts used in the projects
 
-***   
-   Context API
-   
+
+*  Context API
