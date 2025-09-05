@@ -13,7 +13,7 @@
 
 ### context API and local storage use for handling and managing data
 
-## 5 features of your project
+## 5 features of project
 
 - single page routing.
 - add to cart .
