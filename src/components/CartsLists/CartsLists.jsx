@@ -7,9 +7,13 @@ import favicon from "../../assets/Group.png";
 
 import Modal from "react-modal";
 import { TabTitle } from "../../utilites/gadgetTitle";
+import { CgMenuGridO } from "react-icons/cg";
+import { GoGitPullRequestClosed } from "react-icons/go";
 
 const CartsLists = () => {
   TabTitle("Carts Lists - Gadgetes Heaven");
+
+  const [opens , setOpens] = useState(false)
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -67,22 +71,30 @@ const CartsLists = () => {
 
   return (
     <>
-      <div className="navbar ">
+      <div className="navbar relative">
         <div className="flex-1">
           <Link href="/" className="btn btn-ghost text-2xl">
             Carts
           </Link>
         </div>
-        <div className="flex-none">
-          <ul className="menu menu-horizontal px-1 gap-4 items-center">
+     <div className="md:hidden text-2xl" onClick={() => setOpens(!opens)}>
+      {
+        opens === true ? <GoGitPullRequestClosed /> 
+        : 
+        <CgMenuGridO ></CgMenuGridO >
+      }
+         
+     </div>
+        <div className={`md:flex absolute top-12 right-4 ${opens ? "bg-purple-100 px-3 rounded-lg py-2" : 'hidden'}`}>
+          <ul className="md:menu md:menu-horizontal px-1 gap-4 items-center ">
             <li>
-              <h3 className="rounded-full font-bold text-xl">
+              <h3 className="my-3 rounded-full font-bold text-xl">
                 Total Price: {formattedTotal}
               </h3>
             </li>
             <li>
               <NavLink
-                className="btn border-2 border-purple-600 bg-purple-200 font-bold rounded-full text-purple-700 hover:bg-purple-600 hover:text-white"
+                className="btn border-2 border-purple-600 bg-purple-200 font-bold rounded-full text-purple-700 hover:bg-purple-600 hover:text-white mb-3"
                 onClick={() => handleSort("price")}
               >
                 Sort by Price
