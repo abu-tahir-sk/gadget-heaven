@@ -85,7 +85,7 @@ const CartsLists = () => {
       }
          
      </div>
-        <div className={`md:flex absolute top-12 right-4 ${opens ? "bg-purple-100 px-3 rounded-lg py-2" : 'hidden'}`}>
+        <div className={`md:flex absolute md:static top-12 right-4 ${opens ? "bg-purple-100 px-3 rounded-lg py-2" : 'hidden'}`}>
           <ul className="md:menu md:menu-horizontal px-1 gap-4 items-center ">
             <li>
               <h3 className="my-3 rounded-full font-bold text-xl">
