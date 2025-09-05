@@ -1,2 +1,8 @@
 # Gadget heaven 
-## https://prismatic-baklava-6d0563.netlify.app/
+## https://delirious-organization.surge.sh/
+
+### React Fundamental concepts used in the projects
+
+***   
+   Context API
+   
