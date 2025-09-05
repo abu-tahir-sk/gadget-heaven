@@ -70,7 +70,7 @@ const NavBar = () => {
           }
           to="/statistics"
         >
-          Statistics
+          Contact
         </NavLink>
       </li>
     </>
